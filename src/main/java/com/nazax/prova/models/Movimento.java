@@ -3,6 +3,8 @@ package com.nazax.prova.models;
 import com.nazax.prova.enums.Classificacao;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "movimento")
 public class Movimento {
@@ -11,12 +13,17 @@ public class Movimento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String data_movimento;
+    @Column(nullable = false)
+    private LocalDateTime dataMovimento;
 
-    private String valor;
+    @Column(nullable = false)
+    private Double valor;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Classificacao classificacao;
+
+    private String observacao;
 
     public Movimento() {
 
@@ -24,8 +31,8 @@ public class Movimento {
 
     public Movimento(Long id, String data_movimento, String valor, Classificacao classificacao) {
         this.id = id;
-        this.data_movimento = data_movimento;
-        this.valor = valor;
+        this.dataMovimento = LocalDateTime.parse(data_movimento);
+        this.valor = Double.parseDouble(valor);
         this.classificacao = classificacao;
     }
 
@@ -37,19 +44,19 @@ public class Movimento {
         this.id = id;
     }
 
-    public String getData_movimento() {
-        return data_movimento;
+    public LocalDateTime getDataMovimento() {
+        return dataMovimento;
     }
 
-    public void setData_movimento(String data_movimento) {
-        this.data_movimento = data_movimento;
+    public void setDataMovimento(LocalDateTime dataMovimento) {
+        this.dataMovimento = dataMovimento;
     }
 
-    public String getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
@@ -59,5 +66,13 @@ public class Movimento {
 
     public void setClassificacao(Classificacao classificacao) {
         this.classificacao = classificacao;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 }
