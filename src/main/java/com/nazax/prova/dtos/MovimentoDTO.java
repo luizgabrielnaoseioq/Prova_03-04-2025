@@ -27,4 +27,20 @@ public class MovimentoDTO {
     public void setClassificacao(Classificacao classificacao) {
         this.classificacao = classificacao;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Classificacao getClassificacao() {
+        return classificacao;
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public String getData_movimento() {
+        return data_movimento;
+    }
 }
