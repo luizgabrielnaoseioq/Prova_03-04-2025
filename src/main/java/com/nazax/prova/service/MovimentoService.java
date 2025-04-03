@@ -36,16 +36,15 @@ public class MovimentoService {
 
     public MovimentoDTO atualizar(Long id, MovimentoDTO movimentoDTO) {
         Optional<Movimento> optionalMovimento = movimentoRepository.findById(id);
-        if (optionalMovimento.isPresent()) {
-            Movimento movimento = optionalMovimento.get();
-            movimento.setDataMovimento(movimentoDTO.getDataMovimento());
-            movimento.setValor(movimentoDTO.getValor());
-            movimento.setClassificacao(movimentoDTO.getClassificacao());
-            movimento.setObservacao(movimentoDTO.getObservacao());
-            Movimento updatedMovimento = movimentoRepository.save(movimento);
-            return new MovimentoDTO(updatedMovimento.getId(), updatedMovimento.getDataMovimento(), updatedMovimento.getValor(), updatedMovimento.getClassificacao(), updatedMovimento.getObservacao());
-        }
-        return null;
+
+        Movimento movimento = optionalMovimento.get();
+        movimento.setDataMovimento(movimentoDTO.getDataMovimento());
+        movimento.setValor(movimentoDTO.getValor());
+        movimento.setClassificacao(movimentoDTO.getClassificacao());
+        movimento.setObservacao(movimentoDTO.getObservacao());
+
+        Movimento updatedMovimento = movimentoRepository.save(movimento);
+        return new MovimentoDTO(updatedMovimento.getId(), updatedMovimento.getDataMovimento(), updatedMovimento.getValor(), updatedMovimento.getClassificacao(), updatedMovimento.getObservacao());
     }
 
     public boolean excluir(Long id) {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/movimentos")
+@RequestMapping("/api/movimentos")
 public class MovimentoController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class MovimentoController {
         return ResponseEntity.ok(movimentoService.listarTodos());
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<MovimentoDTO> criarMovimento(@RequestBody MovimentoDTO movimentoDTO) {
         return new ResponseEntity<>(movimentoService.salvar(movimentoDTO), HttpStatus.CREATED);
     }

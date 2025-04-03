@@ -13,6 +13,11 @@ public class MovimentoDTO {
     private String observacao;
 
     public MovimentoDTO(Long id, LocalDateTime dataMovimento, Double valor, Classificacao classificacao, String observacao) {
+        this.id = id;
+        this.dataMovimento = dataMovimento;
+        this.valor = valor;
+        this.classificacao = classificacao;
+        this.observacao = observacao;
     }
 
     public void setId(Long id) {
